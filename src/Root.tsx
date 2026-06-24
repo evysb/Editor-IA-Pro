@@ -1,5 +1,7 @@
 import {Composition, Folder} from "remotion";
 
+import {withWatermark} from "./components/overlays/withWatermark";
+
 import {ShowcaseComposition} from "./compositions/Showcase";
 
 import {TikTokVideo} from "./templates/social/TikTokVideo";
@@ -22,6 +24,9 @@ import {PodcastClip} from "./templates/editing/PodcastClip";
  * total length (durationInFrames, at the given fps), plus defaultProps that seed
  * Studio's props editor. Compositions are grouped into <Folder>s purely for
  * organization in the Studio sidebar.
+ *
+ * Every component is wrapped with withWatermark so the invisible forensic
+ * watermark is baked into all renders by default.
  */
 export const RemotionRoot: React.FC = () => {
   return (
@@ -29,7 +34,7 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Examples">
         <Composition
           id="Showcase"
-          component={ShowcaseComposition}
+          component={withWatermark(ShowcaseComposition)}
           durationInFrames={300}
           fps={30}
           width={1920}
@@ -40,7 +45,7 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Social">
         <Composition
           id="TikTok"
-          component={TikTokVideo}
+          component={withWatermark(TikTokVideo)}
           durationInFrames={270}
           fps={30}
           width={1080}
@@ -53,7 +58,7 @@ export const RemotionRoot: React.FC = () => {
         />
         <Composition
           id="InstagramReel"
-          component={InstagramReel}
+          component={withWatermark(InstagramReel)}
           durationInFrames={240}
           fps={30}
           width={1080}
@@ -66,7 +71,7 @@ export const RemotionRoot: React.FC = () => {
         />
         <Composition
           id="YouTubeShort"
-          component={YouTubeShort}
+          component={withWatermark(YouTubeShort)}
           durationInFrames={300}
           fps={30}
           width={1080}
@@ -81,7 +86,7 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Content">
         <Composition
           id="Presentation"
-          component={Presentation}
+          component={withWatermark(Presentation)}
           durationInFrames={450}
           fps={30}
           width={1920}
@@ -96,7 +101,7 @@ export const RemotionRoot: React.FC = () => {
         />
         <Composition
           id="Testimonial"
-          component={Testimonial}
+          component={withWatermark(Testimonial)}
           durationInFrames={180}
           fps={30}
           width={1920}
@@ -113,7 +118,7 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Promo">
         <Composition
           id="Announcement"
-          component={Announcement}
+          component={withWatermark(Announcement)}
           durationInFrames={300}
           fps={30}
           width={1920}
@@ -127,7 +132,7 @@ export const RemotionRoot: React.FC = () => {
         />
         <Composition
           id="BeforeAfter"
-          component={BeforeAfterDemo}
+          component={withWatermark(BeforeAfterDemo)}
           durationInFrames={180}
           fps={30}
           width={1920}
@@ -138,7 +143,7 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Editing">
         <Composition
           id="TalkingHeadEdit"
-          component={TalkingHeadEdit}
+          component={withWatermark(TalkingHeadEdit)}
           durationInFrames={900}
           fps={30}
           width={1920}
@@ -152,7 +157,7 @@ export const RemotionRoot: React.FC = () => {
         />
         <Composition
           id="PodcastClip"
-          component={PodcastClip}
+          component={withWatermark(PodcastClip)}
           durationInFrames={900}
           fps={30}
           width={1080}
