@@ -33,19 +33,20 @@ async function main() {
   });
   console.log(alreadyExisted ? "Whisper.cpp already installed" : "Whisper.cpp installed");
 
-  console.log("Downloading model (medium.en)...");
+  console.log("Downloading model (medium)...");
   await downloadWhisperModel({
-    model: "medium.en",
+    model: "medium",
     folder: whisperPath,
   });
   console.log("Model ready");
 
   console.log(`Transcribing: ${inputPath}`);
   const whisperOutput = await transcribe({
-    model: "medium.en",
+    model: "medium",
     whisperPath,
     whisperCppVersion: "1.5.5",
     inputPath,
+    language: "pt",
     // Required for word-level timing: yields per-token timestamps that toCaptions
     // turns into individual word captions (not whole-segment captions).
     tokenLevelTimestamps: true,
